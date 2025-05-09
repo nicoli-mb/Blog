@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.navbar {
+  font-weight: bold;
+}
+
+.navbar a {
+  color: white !important;
+  margin: 0 10px;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 30px auto;
+}
+
+.banner-img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.banner-texto {
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 170, 190, 0.8);
+  font-size: 80px;
+  vertical-align: center;
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  height: 36vw;
+  width: 42%;
+}
+
+.titulo-secao {
+  text-align: center;
+  margin: 40px 0 20px;
+  font-size: 18px;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #ccc;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 5px;
+}
+
+.posts-grid {
+  margin-bottom: 60px;
+}
+
+.post {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.post img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.post-texto {
+  background-color: #c2e5e7;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+.post-texto p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.btn-vermais {
+  background-color: black;
+  color: white;
+  font-size: 13px;
+  padding: 5px 10px;
+  border: none;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.btn-vermais:hover {
+  background-color: #333;
+}
+
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-menu a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.footer-menu a:hover {
+  text-decoration: underline;
+}
+
+.post-principal {
+  width: 100%;
+  max-width: 900px;
+  margin: 30px auto;
+}
+
+.post-img-grande {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.post-conteudo {
+  max-width: 900px;
+  margin: 30px auto 60px;
+  line-height: 1.6;
+}
+
+.post-conteudo h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.post-conteudo p {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .banner-texto {
+    font-size: 22px;
+    padding: 10px;
+    right: 5%;
+
+  }
+
+  .footer-menu a {
+    display: block;
+    margin: 5px 0;
+  }
+}
