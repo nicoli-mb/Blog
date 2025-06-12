@@ -1,0 +1,152 @@
+
+/* CORRIGE O TREMOR DOS POSTS */
+.post {
+  margin-bottom: 30px;
+  text-align: center;
+  /* IMPORTANTE: Remove transforms que causam tremor */
+  transform: none !important;
+  transition: none !important;
+  position: relative;
+  /* Força aceleração por hardware */
+  will-change: auto;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Remove hover effects que causam tremor */
+.post:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  transition: none !important;
+}
+
+/* Estabiliza as imagens */
+.post img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 3px;
+  /* IMPORTANTE: Estabiliza a imagem */
+  display: block;
+  position: relative;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Remove qualquer hover effect das imagens */
+.post img:hover {
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Estabiliza o texto dos posts */
+.post-texto {
+  background-color: #c2e5e7;
+  padding: 15px;
+  margin-top: 10px;
+  /* IMPORTANTE: Estabiliza o container de texto */
+  position: relative;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Estabiliza botões */
+.btn-vermais {
+  background-color: black;
+  color: white;
+  font-size: 13px;
+  padding: 5px 10px;
+  border: none;
+  text-transform: uppercase;
+  text-decoration: none;
+  /* IMPORTANTE: Remove transforms */
+  transform: none !important;
+  transition: none !important;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-vermais:hover {
+  background-color: #333;
+  /* IMPORTANTE: Sem transforms no hover */
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Estabiliza o container de posts */
+.posts-grid {
+  margin-bottom: 60px;
+  /* IMPORTANTE: Força estabilidade */
+  position: relative;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Estabiliza as colunas */
+.posts-grid .col-md-3 {
+  /* IMPORTANTE: Remove qualquer movimento */
+  transform: none !important;
+  transition: none !important;
+  position: relative;
+}
+
+/* CORRIGE TREMOR NA PÁGINA 2 */
+.post-principal {
+  width: 100%;
+  max-width: 900px;
+  margin: 30px auto;
+  /* IMPORTANTE: Estabiliza */
+  position: relative;
+  transform: none !important;
+  transition: none !important;
+}
+
+.post-img-grande {
+  width: 100%;
+  border-radius: 4px;
+  /* IMPORTANTE: Estabiliza imagem grande */
+  display: block;
+  position: relative;
+  transform: none !important;
+  transition: none !important;
+}
+
+.post-conteudo {
+  max-width: 900px;
+  margin: 30px auto 60px;
+  line-height: 1.6;
+  /* IMPORTANTE: Estabiliza conteúdo */
+  position: relative;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Remove animações que podem causar tremor */
+* {
+  -webkit-animation: none !important;
+  -moz-animation: none !important;
+  -o-animation: none !important;
+  -ms-animation: none !important;
+  animation: none !important;
+}
+
+/* Força estabilidade em todos os elementos filhos dos posts */
+.post * {
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Estabiliza o scroll */
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  /* Remove qualquer movimento no body */
+  transform: none !important;
+  transition: none !important;
+  position: relative;
+}
+
+
