@@ -1,12 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM carregado, iniciando...");
   
-  // Variável para controlar se os posts já foram carregados
   let postsCarregados = false;
  
-  // Função para carregar posts da API na página inicial
   function carregarPosts() {
-    // Evita carregar posts múltiplas vezes
     if (postsCarregados) {
       console.log("Posts já foram carregados, ignorando...");
       return;
@@ -21,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     
-    // Mostra loading mais elegante
     postsContainer.innerHTML = `
       <div class="col-12 text-center" id="loading-message">
         <div class="spinner-border" role="status">
@@ -42,10 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(posts => {
         console.log("Posts recebidos:", posts);
         
-        // Marca como carregado para evitar recarregamentos
         postsCarregados = true;
         
-        // Pequeno delay para evitar "flash" visual
         setTimeout(() => {
           renderizarPosts(posts, postsContainer);
         }, 300);
@@ -53,19 +47,16 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch(error => {
         console.error('Erro ao carregar posts:', error);
-        postsCarregados = true; // Marca como carregado mesmo com erro
+        postsCarregados = true; 
         setTimeout(() => {
           mostrarPostsPadrao(postsContainer);
         }, 300);
       });
   }
   
-  // Função separada para renderizar posts
   function renderizarPosts(posts, container) {
-    // Cria fragment para melhor performance
     const fragment = document.createDocumentFragment();
     
-    // Limita a 8 posts para manter o layout
     const postsLimitados = posts.slice(0, 8);
     
     postsLimitados.forEach((post, index) => {
@@ -75,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
       postElement.className = 'col-md-3 post';
       postElement.setAttribute('data-post-id', index + 1);
       
-      // Adiciona classe para animação suave
       postElement.style.opacity = '0';
       postElement.style.transform = 'translateY(20px)';
       postElement.style.transition = 'all 0.3s ease';
@@ -93,18 +83,16 @@ document.addEventListener("DOMContentLoaded", () => {
       fragment.appendChild(postElement);
     });
     
-    // Substitui todo o conteúdo de uma vez
     container.innerHTML = '';
     container.appendChild(fragment);
     
-    // Anima a entrada dos posts
     setTimeout(() => {
       const postElements = container.querySelectorAll('.post');
       postElements.forEach((post, index) => {
         setTimeout(() => {
           post.style.opacity = '1';
           post.style.transform = 'translateY(0)';
-        }, index * 100); // Animação escalonada
+        }, index * 100); 
       });
     }, 50);
     
@@ -112,7 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
     adicionarClickListeners();
   }
  
-  // Função para mostrar posts padrão se a API falhar
   function mostrarPostsPadrao(container) {
     console.log("Mostrando posts padrão...");
     
@@ -157,7 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
     container.innerHTML = '';
     container.appendChild(fragment);
     
-    // Anima a entrada
     setTimeout(() => {
       const postElements = container.querySelectorAll('.post');
       postElements.forEach((post, index) => {
@@ -171,24 +157,19 @@ document.addEventListener("DOMContentLoaded", () => {
     adicionarClickListeners();
   }
  
-  // Função para adicionar event listeners aos posts (com debounce)
   function adicionarClickListeners() {
-    // Remove event listeners antigos se existirem
     const posts = document.querySelectorAll(".post");
     
     posts.forEach(post => {
-      // Remove listener antigo se existir
       const newPost = post.cloneNode(true);
       post.parentNode.replaceChild(newPost, post);
     });
     
-    // Adiciona novos listeners
     const newPosts = document.querySelectorAll(".post");
     
     newPosts.forEach(post => {
       post.addEventListener("click", handlePostClick, { once: false });
       
-      // Adiciona listener específico para botões
       const button = post.querySelector('.btn-vermais');
       if (button) {
         button.addEventListener("click", handlePostClick, { once: false });
@@ -196,14 +177,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   
-  // Função separada para lidar com cliques (com debounce)
   let clickTimeout = null;
   
   function handlePostClick(e) {
     e.preventDefault();
     e.stopPropagation();
     
-    // Debounce para evitar cliques múltiplos
     if (clickTimeout) {
       clearTimeout(clickTimeout);
     }
@@ -222,22 +201,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 150);
   }
  
-  // Função para carregar post específico na página 2
   function carregarPostEspecifico() {
-    // Verifica se está na página 2
     if (!window.location.pathname.includes('pagina2.html')) {
       return;
     }
    
     console.log("Carregando post específico...");
    
-    // Pega o ID do post da URL
     const urlParams = new URLSearchParams(window.location.search);
     const postId = urlParams.get('postId') || '1';
    
     console.log("ID do post:", postId);
     
-    // Mostra loading
     const titleElement = document.getElementById('post-title');
     const postContent = document.getElementById('post-content');
     
@@ -267,12 +242,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
   
-  // Função para renderizar post específico
   function renderizarPostEspecifico(post) {
-    // Atualiza o título da página
     document.title = `Post - ${post.title}`;
    
-    // Atualiza os elementos da página
     const titleElement = document.getElementById('post-title');
     if (titleElement) {
       titleElement.style.opacity = '0';
@@ -282,7 +254,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 150);
     }
    
-    // Atualiza a imagem
     const postImage = document.getElementById('post-image');
     if (postImage) {
       postImage.style.opacity = '0';
@@ -296,7 +267,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 150);
     }
    
-    // Atualiza o conteúdo
     const postContent = document.getElementById('post-content');
     if (postContent) {
       postContent.style.opacity = '0';
@@ -321,7 +291,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
  
-  // Função para mostrar conteúdo padrão se a API falhar
   function mostrarConteudoPadrao() {
     const titleElement = document.getElementById('post-title');
     const postImage = document.getElementById('post-image');
@@ -359,7 +328,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
  
-  // Adiciona estilos de transição via CSS
   const style = document.createElement('style');
   style.textContent = `
     #post-title, #post-image, #post-content {
@@ -381,7 +349,6 @@ document.addEventListener("DOMContentLoaded", () => {
   `;
   document.head.appendChild(style);
  
-  // Executa a função apropriada baseado na página atual
   console.log("Verificando página atual:", window.location.pathname);
  
   if (window.location.pathname.includes('pagina2.html')) {
